@@ -220,9 +220,9 @@ RCT_EXPORT_METHOD(unlockAllOrientations)
   #if DEBUG
     NSLog(@"Unlock All Orientations");
   #endif
-  [Orientation setOrientation:UIInterfaceOrientationMaskAllButUpsideDown];
-//  AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//  delegate.orientation = 3;
+  UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+  [Orientation setOrientation:UIInterfaceOrientationMaskAll];
+  [self lockToOrientationWithMask:UIInterfaceOrientationMaskAll interfaceOrientation:UIInterfaceOrientationMaskAll deviceOrientation:orientation];
 }
 
 - (NSDictionary *)constantsToExport
